@@ -10,6 +10,8 @@ def xmlize(obj, parent='items'):
         return ''.join(["<%s>%s</%s>" % (k, xmlize(obj[k], k), k) for k in obj])
     elif isinstance(obj, list):
         return ''.join(["<%s>%s</%s>" % (singularize(parent), xmlize(e), singularize(parent)) for e in obj])
+    elif obj == None:
+        return ""
     else:
         return str(obj)
 

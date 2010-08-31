@@ -5,7 +5,11 @@ class Game(models.Model):
     description = models.CharField(max_length=200)
     category = models.CharField(max_length=200)
     developer = models.CharField(max_length=200)
-    added = models.DateTimeField('date added')
+    screens_url = models.CharField(max_length=200)
+    screens_updated = models.DateTimeField('date screens updated', null=True)
+    download_url = models.CharField(max_length=200)
+    download_updated = models.DateTimeField('date download updated', null=True)
+    added = models.DateTimeField('date added', auto_now_add=True)
     
     def __str__(self):
         return self.name
@@ -16,5 +20,9 @@ class Game(models.Model):
             description=self.description,
             category=self.category,
             developer=self.developer,
+            screens_url=self.screens_url,
+            screens_updated=self.screens_updated.strftime('%Y-%m-%dT%H:%M:%S') if self.screens_updated else None,
+            download_url=self.download_url,
+            download_updated=self.download_updated.strftime('%Y-%m-%dT%H:%M:%S') if self.download_updated else None,
             added=self.added.strftime('%Y-%m-%dT%H:%M:%S')
         )
