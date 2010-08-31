@@ -16,7 +16,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.admin',
-    'games',
+    'arcade',
 )
 
 if has_djangoappengine:

@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.utils import simplejson
-from games.models import Game
-from games.utils import singularize
+from arcade.models import Game
+from arcade.utils import singularize
 
 def xmlize(obj, parent='items'):
     if isinstance(obj, str):
@@ -14,9 +14,10 @@ def xmlize(obj, parent='items'):
         return str(obj)
 
 def api_games(request, format):
+    data = {'games': [g.serialize() for g in Game.objects.all()]}
     if format == 'json':
-        return HttpResponse(simplejson.dumps({'games': [g.serialize() for g in Game.objects.all()]}))
+        return HttpResponse(simplejson.dumps(data))
     elif format == 'xml':
-        return HttpResponse(xmlize({'games': [g.serialize() for g in Game.objects.all()]}))
+        return HttpResponse(xmlize(data))
     else:
         return HttpResponse("Unsupported format")

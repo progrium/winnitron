@@ -7,6 +7,9 @@ class Game(models.Model):
     developer = models.CharField(max_length=200)
     added = models.DateTimeField('date added')
     
+    def __str__(self):
+        return self.name
+    
     def serialize(self):
         return dict(
             name=self.name,

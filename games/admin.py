@@ -1,4 +1,7 @@
-from games.models import Game
+from arcade.models import Game
 from django.contrib import admin
 
-admin.site.register(Game)
+class GameAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category')
+
+admin.site.register(Game, GameAdmin)

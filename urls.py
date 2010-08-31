@@ -6,7 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Example:
     # (r'^winnitron/', include('winnitron.foo.urls')),
-    (r'^api/v1/games\.(?P<format>[\w]+)$', 'games.views.api_games'),
+    (r'^api/v1/games\.(?P<format>[\w]+)$', 'arcade.views.api_games'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
