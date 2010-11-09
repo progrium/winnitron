@@ -17,7 +17,7 @@ class Game(models.Model):
         super(Game, self).save()
     
     def tag_list(self):
-        return self.tags.strip().split(' ')
+        return filter(lambda x: x, self.tags.strip().split(' '))
     
     def __str__(self):
         return self.name
